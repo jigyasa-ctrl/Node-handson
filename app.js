@@ -1,7 +1,13 @@
-const amount = 12;
-if(amount< 10){
-    console.log('small')
-}else{
-    console.log('large')
+//Modules
+
+//CommonJS - every file is a module
+//Modules - Encapsulated code (only share minimum)
+const john = 'john'
+const peter = 'peter'
+const sayHi =(name) => {
+console.log(`hello ${name}`)
 }
-console.group(`hey, 1st node app`)
+
+sayHi('jigyasa')
+sayHi(peter);
+sayHi(john)

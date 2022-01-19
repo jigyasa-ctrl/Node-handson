@@ -1,4 +1,9 @@
-const { readFile } = require('fs');
+const { readFile, writeFile } = require('fs');
+//const { readFile, writeFile } = require('fs').promises; - this one also returns functions which return a prmise - now readFile will return a promise
+const util = require('util');
+const readFilePromise = util.promisify(readFile);
+const writeFilePromise = util.promisify(writeFile);
+
 
 // this is a promise
 const getText = (path) => {
@@ -15,9 +20,10 @@ const getText = (path) => {
 
 // getText('./content/first.txt').then(result => console.log(result)).catch(err => console.log(err))
 
-const start = async() => {
+const start = async () => {
     try {
-        const first = await getText('./content/first.txt')
+        const first = await readFilePromise('./content/first.txt', 'utf-8');
+        const second = await readFilePromise('./content/first.txt', 'utf-8')
         console.log(first)
     } catch (err) {
         console.log(err)
@@ -25,4 +31,4 @@ const start = async() => {
 }
 start()
 
- 
+
